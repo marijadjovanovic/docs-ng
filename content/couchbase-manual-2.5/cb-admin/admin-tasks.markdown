@@ -437,12 +437,12 @@ to filter for the information:
 
 
 ```
-> cbstats localhost:11210 -b beer_sample -p bucket_password all | grep 'warmup'
+> cbstats localhost:11210 -b beer-sample -p bucket_password all | grep 'warmup'
 > cbstats hostname:11210 -b my_bucket -p bucket_password raw warmup
 ```
 
 Here the `localhost:11210` is the host name and default memcached port for a
-given node and `beer_sample` is a named bucket for the node. If you do not
+given node and `beer-sample` is a named bucket for the node. If you do not
 specify a bucket name, the command will apply to any existing default bucket for the node.
 
 * **ep\_warmup\_thread** - Indicates whether the warmup completed or is still running. Returns "running" or "complete". 
@@ -513,7 +513,7 @@ the access scanner process runs to every 20 minutes:
 
 
 ```
-> ./cbepctl localhost:11210 -b beer_sample set flush_param alog_sleep_time 20
+> ./cbepctl localhost:11210 -b beer-sample set flush_param alog_sleep_time 20
 ```
 
 This updates the parameter for the named bucket, beer-sample on the given node
@@ -522,7 +522,7 @@ from the default of 2:00 AM UTC:
 
 
 ```
-> ./cbepctl hostname:11210 -b beer_sample -p beer_password set flush_param alog_task_time 13
+> ./cbepctl hostname:11210 -b beer-sample -p beer_password set flush_param alog_task_time 13
 ```
 
 In this example we set the initial time to 1:00 PM UTC.
@@ -628,7 +628,7 @@ the cluster. Data replication enables high availability of data in a cluster.
 Should any node in cluster fail, the data will still be available at a replica.
 
 On any give node, both active and replica data must wait in a disk write queue
-before being written to disk. If you node experiences a heavy load of writes,
+before being written to disk. If your node experiences a heavy load of writes,
 the replication queue can become overloaded with replica and active data waiting
 to be persisted.
 
@@ -3434,7 +3434,7 @@ If you want to change the replication protocol for an existing XDCR replication,
 
     - `XDCR Optimistic Replication Threshold`. This will improve latency for XDCR.
 
-      This is the compressed document size in bytes. 0 to 2097152 Bytes (20MB). Default is 256 Bytes. XDCR
+      This is the compressed document size in bytes. 0 to 20971520 Bytes (20MB). Default is 256 Bytes. XDCR
       will get metadata for documents larger than this size on a single time before
       replicating the uncompressed document to a destination cluster. For background information, see 
       ['Optimistic Replication' in XDCR](#xdcr-optimistic-replication).

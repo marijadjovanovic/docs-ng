@@ -117,12 +117,19 @@ Rebalancing | Rebalancing enables load distribution across resources and dynamic
 
 Capability      | memcached Buckets                               | Couchbase Buckets        
 ----------------|-------------------------------------------------|--------------------------
-Item Size Limit | 1 MByte                                         | 20 MByte                 
-Persistence     | No                                              | Yes                      
-Replication     | No                                              | Yes                      
-Rebalance       | No                                              | Yes                      
-Statistics      | Limited set for in-memory stats                 | Full suite               
-Client Support  | Memcached, should use Ketama consistent hashing | Full Smart Client Support
+Item Size Limit | 1 MByte | 20 MByte
+Persistence | No | Yes
+Replication | No | Yes
+Rebalance | No | Yes
+Statistics | Limited set for in-memory stats | Full suite
+Client Support | Memcached, should use Ketama consistent hashing | Full Smart Client Support
+XDCR | No | Yes
+Backup | No | Yes
+Tap/DCP | No | Yes
+Encrypted Data Access | No | Yes 
+
+
+
 
 There are three bucket interface types that can be be configured:
 
@@ -479,11 +486,9 @@ will be stored indefinitely. The expiration can be used for data that naturally
 has a limited life that you want to be automatically deleted from the entire
 database.
 
-The expiration value is user-specified on a document basis at the point when the
-data is stored. The expiration can also be updated when the data is updated, or
-explicitly changed through the Couchbase protocol. The expiration time can
-either be specified as a relative time (for example, in 60 seconds), or absolute
-time (31st December 2012, 12:00pm).
+The expiration value is user-specified on a per document basis at the point when the object is created, updated, or changed through the Couchbase SDK.
+If you want an object to expire before 30 days, you can provide a TTL in seconds, or as Unix epoch time.
+If you want an object to expire sometime after 30 days, you must provide a TTL in Unix epoch time; for instance, 1 095 379 198 indicates the seconds since 1970."
 
 Typical uses for an expiration value include web session data, where you want
 the actively stored information to be removed from the system if the user

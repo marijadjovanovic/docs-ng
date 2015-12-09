@@ -2,6 +2,11 @@
 
 # Getting started
 
+<div class="notebox warning">
+<p>A newer version of this software is available</p>
+<p>You are viewing the documentation for an older version of this software. To find the documentation for the current version, visit the <a href="http://docs.couchbase.com">Couchbase documentation home page</a>.</p>
+</div>
+
 To start using Couchbase Server, follow these steps:
 
  1. Make sure your machine meets the system requirements. See
@@ -246,8 +251,9 @@ XDCR
 : These ports are used for XDCR communication between all nodes in both the source and
    destination clusters.
 
-
-
+<div class="notebox"><p>Note</p>
+<p>Port 11213 is an internal ports used on the local host for memcached and compaction. The node is not used for communication between nodes in a cluster. For firewall purposes, you do not need to take port 11213 into consideration. However, if a service is listening on this port, Couchbase Server does not start correctly.</p>
+</div>
 
 
 
@@ -624,8 +630,7 @@ it.
 The TCP/IP port allocation on Windows by default includes a restricted number of
 ports available for client communication. For more information on this issue,
 including information on how to adjust the configuration and increase the
-available ports, see [MSDN: Avoiding TCP/IP Port
-Exhaustion](http://msdn.microsoft.com/en-us/library/aa560610(v=bts.20).aspx).
+available ports, see <a href="http://msdn.microsoft.com/en-us/library/aa560610(v=bts.20).aspx">MSDN: Avoiding TCP/IP Port Exhaustion</a>
 </p>
 </div>
 
@@ -641,16 +646,14 @@ successfully, shut down all other running applications during installation.
 <p>
 For Windows 2008, you must upgrade your Windows Server 2008 R2 installation with
 Service Pack 1 installed before running Couchbase Server. You can obtain Service
-Pack 1 from [Microsoft
-TechNet](http://technet.microsoft.com/en-us/library/ff817647(v=ws.10).aspx).
+Pack 1 from <a href="http://technet.microsoft.com/en-us/library/ff817647(v=ws.10).aspx">Microsoft TechNet</a>
 </p>
 <p>
 The standard Microsoft Server installation does not provide an adequate number
 of ephemeral ports for Couchbase clusters. Without the correct number of open
 ephemeral ports, you may experience errors during rebalance, timeouts on
 clients, and failed backups. The Couchbase Server installer will check for your
-current port setting and adjust it if needed. See [Microsoft
-KB-196271](http://support.microsoft.com/kb/196271).
+current port setting and adjust it if needed. See <a href="http://support.microsoft.com/kb/196271">Microsoft KB-196271</a>
 </p>
 </div>
 
@@ -693,6 +696,21 @@ KB-196271](http://support.microsoft.com/kb/196271).
     ![](../images/windows_port_check2.png)
 
  1. Restart the server for the port changes to be applied.
+
+<div class="notebox warning">
+<p>Important</p>
+<p>
+If the Windows installer hangs on the Computing Space Requirements screen, there is an issue with your setup or installation environment, for example, other running applications. 
+      <p>Workaround: <ol>
+        <li>Stop any other running browers and applications when you started installing Couchbase.</li>
+        <li>Kill the installation process and uninstall the failed setup.</li>
+        <li>Delete or rename the temp location under C:\Users\[logonuser]\AppData\Temp</li>
+        <li>Reboot and try again.</li>
+      </ol></p>
+</p>
+</div>
+
+    
 
 After installation you should follow the server setup instructions. See [Initial
 Server Setup](#couchbase-getting-started-setup).

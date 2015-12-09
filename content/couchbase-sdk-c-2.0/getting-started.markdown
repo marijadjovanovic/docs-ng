@@ -1,5 +1,9 @@
 #Introduction
 
+<div class="notebox warning">
+<p>A newer version of this software is available</p>
+<p>You are viewing the documentation for an older version of this software. To find the documentation for the current version, visit the <a href="http://docs.couchbase.com">Couchbase documentation home page</a>.</p>
+</div>
 This guide provides information for developers who want to use the Couchbase C SDK to build applications that use Couchbase Server.
 
 # Getting Started
@@ -22,8 +26,8 @@ Here's a quick outline of what you'll learn in this chapter:
 
 ## Downloading the Couchbase Client Library
 
-Download the latest client library from the [Coucbase download
-site](http://www.couchbase.com/develop/c/current/). It is available as a source
+Download the latest client library from the [Couchbase download
+site](http://www.couchbase.com/downloads). It is available as a source
 archive in both `.zip` and `.tar.gz`
 
 <a id="c-install-linux"></a>

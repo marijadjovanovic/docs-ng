@@ -1,5 +1,10 @@
 # Introduction to Couchbase Server
 
+<div class="notebox warning">
+<p>A newer version of this software is available</p>
+<p>You are viewing the documentation for an older version of this software. To find the documentation for the current version, visit the <a href="http://docs.couchbase.com">Couchbase documentation home page</a>.</p>
+</div>
+
 Couchbase Server is a NoSQL document database for interactive web applications.
 It has a flexible data model, is easily scalable, provides consistent high
 performance and is 'always-on,' meaning it is can serve application data 24
@@ -206,12 +211,15 @@ Rebalancing | Rebalancing enables load distribution across resources and dynamic
 
 Capability      | memcached Buckets                               | Couchbase Buckets        
 ----------------|-------------------------------------------------|--------------------------
-Item Size Limit | 1 MByte                                         | 20 MByte                 
-Persistence     | No                                              | Yes                      
-Replication     | No                                              | Yes                      
-Rebalance       | No                                              | Yes                      
-Statistics      | Limited set for in-memory stats                 | Full suite               
-Client Support  | Memcached, should use Ketama consistent hashing | Full Smart Client Support
+Item Size Limit | 1 MByte | 20 MByte
+Persistence | No | Yes
+Replication | No | Yes
+Rebalance | No | Yes
+Statistics | Limited set for in-memory stats | Full suite
+Client Support | Memcached, should use Ketama consistent hashing | Full Smart Client Support
+XDCR | No | Yes
+Backup | No | Yes
+Tap/DCP | No | Yes
 
 There are three bucket interface types that can be be configured:
 

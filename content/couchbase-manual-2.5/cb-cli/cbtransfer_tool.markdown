@@ -26,8 +26,9 @@ The tool is at the following locations:
 
 <a id="table-couchbase-admin-cmdline-cbtransfer-locs"></a>
 
-**Linux**    | `/opt/couchbase/bin/`                                                      
+ **Operating system**  | **Location**                                                
 -------------|----------------------------------------------------------------------------
+**Linux**    | `/opt/couchbase/bin/`     
 **Windows**  | `C:\Program Files\Couchbase\Server\bin\`                                   
 **Mac OS X** | `/Applications/Couchbase Server.app/Contents/Resources/couchbase-core/bin/`
 
@@ -52,9 +53,9 @@ The following are the standard command options which you can also view with
 
 <a id="table-couchbase-admin-cbtranfer-options"></a>
 
--h, --help                                                       | Command help                                                                                                                                                                                                                 
+Parameter                                                     | Description                                                                                                                                                                                                               
 -----------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
---add                                                            | Use --add instead of --set in order to not overwrite existing items in the destination
+-h, --help                                                       | Command help     
 -b BUCKET\_SOURCE                                                | Single named bucket from source cluster to transfer                                                                                                                                                                          
 -B BUCKET\_DESTINATION, --bucket-destination=BUCKET\_DESTINATION | Single named bucket on destination cluster which receives transfer. This allows you to transfer to a bucket with a different name as your source bucket. If you do not provide defaults to the same name as the bucket-source
 -i ID, --id=ID                                                   | Transfer only items that match a vbucketID                                                                                                                                                                                   
@@ -68,19 +69,20 @@ The following are the standard command options which you can also view with
 --single-node                                                    | Transfer from a single server node in a source cluster. This single server node is a source node URL                                                                                                                         
 --source-vbucket-state=SOURCE\_VBUCKET\_STATE                    | Only transfer from source vbuckets in this state, such as 'active' (default) or 'replica'. Must be used with Couchbase cluster as source.                                                                                    
 --destination-vbucket-state=DESTINATION\_VBUCKET\_STATE          | Only transfer to destination vbuckets in this state, such as 'active' (default) or 'replica'. Must be used with Couchbase cluster as destination.                                                                            
---destination-operation=DESTINATION\_OPERATION                   | Perform this operation on transfer. "set" will override an existing document, 'add' will not override, 'get' will load all keys transferred from a source cluster into the caching layer at the destination.                 
-`/path/to/filename`                                              | Export a.csv file from the server or import a.csv file to the server.                                                                                                                                                        
+--destination-operation=DESTINATION\_OPERATION                   | Perform this operation on transfer. "set" will override an existing document, 'add' will not override, 'get' will load all keys transferred from a source cluster into the caching layer at the destination. By default, the cbtransfer tool will use "set" and override any existing documents.
+`/path/to/filename`                                              | Export a.csv file from the server or import a.csv file to the server.
 
 The following are extra, specialized command options you use in this form
 `cbtransfer -x [EXTRA OPTIONS]` :
 
 <a id="table-couchbase-admin-cbtranfer-special-options"></a>
 
-batch\_max\_bytes=400000 | Transfer this \# of bytes per batch.                                                                                 
--------------------------|----------------------------------------------------------------------------------------------------------------------
-batch\_max\_size=1000    | Transfer this \# of documents per batch                                                                              
-cbb\_max\_mb=100000      | Split backup file on destination cluster if it exceeds MB                                                            
-max\_retry=10            | Max number of sequential retries if transfer fails                                                                   
+Parameter | Description
+---|---
+batch\_max\_bytes=400000 | Transfer this \# of bytes per batch.
+batch\_max\_size=1000    | Transfer this \# of documents per batch
+cbb\_max\_mb=100000      | Split backup file on destination cluster if it exceeds MB
+max\_retry=10            | Max number of sequential retries if transfer fails
 nmv\_retry=1             | 0 or 1, where 1 retries transfer after a NOT\_MY\_VBUCKET message. Default of 1.                                     
 recv\_min\_bytes=4096    | Amount of bytes for every TCP/IP batch transferred                                                                   
 report=5                 | Number batches transferred before updating progress bar in console                                                   

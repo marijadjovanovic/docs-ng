@@ -1,5 +1,10 @@
 # Introduction
 
+<div class="notebox warning">
+<p>A newer version of this software is available</p>
+<p>You are viewing the documentation for an older version of this software. To find the documentation for the current version, visit the <a href="http://docs.couchbase.com">Couchbase documentation home page</a>.</p>
+</div>
+
 This guide provides information for developers who want to use the Couchbase .NET SDK to build applications that use Couchbase Server.
 
 Beginning with the 1.2.5 release, Couchbase .NET Client Library supports .NET Framework versions 3.5 and 4.0.
@@ -17,15 +22,16 @@ To get the software:
 
 2. Get the client library by using one of the following methods:
 
-	* Download the zip file from the [Couchbase .NET community Getting Started](http://www.couchbase.com/communities/net/getting-started) page.
+	* Download the zip file from [here](http://packages.couchbase.com.s3.amazonaws.com/clients/net/1.3/Couchbase-Net-Client-1.3.11.zip).
 
 	* Run the following command in the [NuGet](http://www.nuget.org) package manger console:
-	
+
 			PM> Install-Package CouchbaseNetClient
-	
+
+
 ## Setting up a project
 
-Create a new console project in Visual Studio. Add references to the **Couchbase.dll**, **Enyim.Memcached.dll**, and **Newtonsoft.Json.dll** assemblies that are in the release zip file.
+Create a new console project in Visual Studio. Add references to the **Couchbase.dll**, **Enyim.Caching.dll**, and **Newtonsoft.Json.dll** assemblies that are in the release zip file.
 
 Visual Studio console applications target the .NET Framework Client Profile by
 default, so you need to change the project properties to target the
@@ -274,7 +280,7 @@ var result = client.StoreJson(StoreMode.Set, key, newBeer);
 Retrieving the Beer instance is also similar to retrieving a document:
 
 ```csharp
-var savedBeer = client.GetJson<beer><Beer>(key);</beer>
+var savedBeer = client.GetJson<Beer>(key);
 ```
 
 At this point, your **Program.cs** file should look something like the

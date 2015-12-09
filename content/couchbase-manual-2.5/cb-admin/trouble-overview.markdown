@@ -103,10 +103,11 @@ Mac OS X | `/Users/couchbase/Library/Application Support/Couchbase/var/lib/couch
 
 Individual log files are automatically numbered, with the number suffix
 incremented for each new log, with a maximum of 20 files per log. Individual log
-file sizes are limited to 10MB by default.
+file sizes are limited to 10MB by default. 
 
-[](#couchbase-troubleshooting-logs-files) contains a list of the different log
-files are create in the logging directory and their contents.
+[](#couchbase-troubleshooting-logs-files) 
+
+The following table contains a list of the different log files are create in the logging directory and their contents.
 
 <a id="couchbase-troubleshooting-logs-files"></a>
 
@@ -115,13 +116,16 @@ File               | Log Contents
 `couchdb`          | Errors relating to the couchdb subsystem that supports views, indexes and related REST API issues                                                          
 `debug`            | Debug level error messages related to the core server management subsystem, excluding information included in the `couchdb`, `xdcr` and `stats` logs.      
 `info`             | Information level error messages related to the core server management subsystem, excluding information included in the `couchdb`, `xdcr` and `stats` logs.
+`http_access.log`  | The admin access log records server requests (including admin logins) coming through the REST or Couchbase web console. It is output in common log format and contains several important fields such as remote client IP, timestamp, GET/POST request and resource requested, HTTP status code, and so on. 
 `error`            | Error level messages for all subsystems excluding `xdcr`.                                                                                                  
 `xcdr_error`       | XDCR error messages.                                                                                                                                       
-`xdcr`             | XDCR information messages.                                                                                                                                 
+`xdcr`             | XDCR information messages.  
+`tmpfail`          | For XDCR, the destination cluster is not able to eject items fast enough to make room for new mutations. XDCR retries several times, without throwing errors, but after a fixed number of attempts the errors are shown to the user. Nevertheless, if a user waits long enough, XDCR eventually retries and is able to replicate the remaining data.                                                                                                                               
 `mapreduce_errors` | JavaScript and other view-processing errors are reported in this file.                                                                                     
 `views`            | Errors relating to the integration between the view system and the core server subsystem.                                                                  
 `stats`            | Contains periodic reports of the core statistics.                                                                                                          
-`memcached.log`    | Contains information relating to the core memcache component, including vBucket and replica and rebalance data streams requests.                           
+`memcached.log`    | Contains information relating to the core memcache component, including vBucket and replica and rebalance data streams requests.  
+`reports.log`      | Contains only progress report and crash reports for the Erlang process.                          
 
 <div class="notebox">
 <p>Note</p>
@@ -197,6 +201,27 @@ curl -X POST -u Administrator:password
   -d 'ale:set_loglevel(ns_server,error).
 ```
 
+
+<a id="couchbase-troubleshooting-logs-rotation"></a>
+
+### Changing the log rotation settings
+
+Each log group is rotated automatically, by default storing 20 files of 10MB each.  The log rotation settings can be changed by modifying the logging configuration in `/opt/couchbase/etc/couchbase/static_config`.
+
+<div class="notebox"><p>Note</p>
+<p>To change the log rotation settings, log in as either root or sudo and restart the Couchbase service.</p>
+</div>
+
+To change the log file configuration:
+
+1. Log in as root or sudo and navigate to the directory where you installed Couchbase. For example:
+`/opt/couchbase/etc/couchbase/static_config`
+1. Edit the *static_config* file and change the `error_logger_mf_maxfiles` and `error_logger_mf_maxbytes` variables to the desired values. For example: ```{error_logger_mf_maxbytes, 20971520}.``` and ```{error_logger_mf_maxfiles, 40}.```  gives 40 files of 20MB each.
+1. Stop the Couchbase service.
+1. Either delete or move __all__ the files from the log directory (default location is `/opt/couchbase/var/lib/couchbase/logs`)
+1. Start the Couchbase service.
+
+After starting the Couchbase service, all subsequent logs are rotated using the new values.
 
 
 

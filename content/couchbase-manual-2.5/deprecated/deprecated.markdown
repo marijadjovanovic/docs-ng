@@ -2,10 +2,16 @@
 
 # Deprecated items
 
+<div class="notebox warning">
+<p>A newer version of this software is available</p>
+<p>You are viewing the documentation for an older version of this software. To find the documentation for the current version, visit the <a href="http://docs.couchbase.com">Couchbase documentation home page</a>.</p>
+</div>
 
 The following are items that are deprecated, will be deprecated, or are unsupported.
 
-* The <code>_all_docs</code> view is not supported.
+* The `_all_docs` view is not supported. To recreate the features provide by `_all_docs`, use the default view. For more information, see the Views section.
+* The undocumented facility for enabling legacy memcached detailed stats through "stats detail on" and "stats detail dump" is deprecated. 
+
 
 
 

@@ -1,5 +1,10 @@
 # Introduction
 
+<div class="notebox warning">
+<p>A newer version of this software is available</p>
+<p>You are viewing the documentation for an older version of this software. To find the documentation for the current version, visit the <a href="http://docs.couchbase.com">Couchbase documentation home page</a>.</p>
+</div>
+
 This guide provides information for developers who want to use the Couchbase .NET SDK to build applications that use Couchbase Server.
 
 # Getting Started
@@ -342,7 +347,7 @@ demonstrated above.
 
 
 ```
-var savedBeer = client.GetJson<beer><Beer>(key);</beer>
+var savedBeer = client.GetJson<Beer>(key);
 ```
 
 At this point, your simple Program.cs file should look something like the

@@ -215,6 +215,12 @@ Port 11211
 All other Ports
 : Used for other Couchbase Server communictions.
 
+
+<div class="notebox"><p>Note</p>
+<p>Port 11213 is an internal ports used on the local host for memcached and compaction. The node is not used for communication between nodes in a cluster. For firewall purposes, you do not need to take port 11213 into consideration. However, if a service is listening on this port, Couchbase Server does not start correctly.</p>
+</div>
+
+
 <a id="couchbase-getting-started-install"></a>
 
 ## Installing Couchbase Server
@@ -593,6 +599,21 @@ KB-196271</a>.</p>
     ![](images/windows_port_check2.png)
 
  1. Restart the server for the port changes to be applied.
+
+
+<div class="notebox warning">
+<p>Important</p>
+<p>
+If the Windows installer hangs on the Computing Space Requirements screen, there is an issue with your setup or installation environment, for example, other running applications. 
+      <p>Workaround: <ol>
+        <li>Stop any other running browers and applications when you started installing Couchbase.</li>
+        <li>Kill the installation process and uninstall the failed setup.</li>
+        <li>Delete or rename the temp location under C:\Users\[logonuser]\AppData\Temp</li>
+        <li>Reboot and try again.</li>
+      </ol></p>
+</p>
+</div>
+
 
 After installation you should follow the server setup instructions. See [Initial
 Server Setup](#couchbase-getting-started-setup).
